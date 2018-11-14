@@ -56,7 +56,7 @@ class Pricing
      */
     public function toPrice()
     {
-        if ($this->passenger->isPass()) {
+        if ($this->passenger->isPass() || $this->passenger->isFree()) {
             return 0;
         }
 

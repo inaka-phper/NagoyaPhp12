@@ -9,11 +9,15 @@
 namespace InakaPhper\NagoyaPhp;
 
 
+use InakaPhper\NagoyaPhp\Exception\LogicException;
+
 class Passenger
 {
     private $type;
 
     private $pass;
+
+    private $free = false;
 
     private $welfare;
 
@@ -45,6 +49,20 @@ class Passenger
     public function isPass()
     {
         return $this->pass;
+    }
+
+    public function setFree()
+    {
+        if ($this->isChild() || $this->isInfant()) {
+            $this->free = true;
+        } else {
+            throw new LogicException('大人は無料にできません');
+        }
+    }
+
+    public function isFree()
+    {
+        return $this->free;
     }
 
     public function isWelfare()

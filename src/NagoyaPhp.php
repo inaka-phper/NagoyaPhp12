@@ -42,7 +42,7 @@ class NagoyaPhp
         $i = 0;
         foreach ($infant as $key => $item) {
             if ($i < $free) {
-                $this->customers->forget($key);
+                $this->passengers->get($key)->setFree();
             }
             $i++;
         }
