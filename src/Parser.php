@@ -26,11 +26,11 @@ class Parser
 
     /**
      * @param $symbol
-     * @return Human
+     * @return Passenger
      */
-    private function toHuman($symbol)
+    private function toPassenger($symbol)
     {
-        return new Human($symbol);
+        return new Passenger($symbol);
     }
 
     /**
@@ -43,7 +43,7 @@ class Parser
         $customers = explode(',', $parse[1]);
 
         foreach ($customers as $customer) {
-            $this->customers[] = $this->toHuman($customer);
+            $this->customers[] = $this->toPassenger($customer);
         }
     }
 

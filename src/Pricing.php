@@ -18,19 +18,19 @@ class Pricing
     private $section;
 
     /**
-     * @var Human
+     * @var Passenger
      */
-    private $human;
+    private $passenger;
 
     /**
      * Pricing constructor.
      * @param int $section
-     * @param Human $human
+     * @param Passenger $passenger
      */
-    public function __construct(int $section, Human $human)
+    public function __construct(int $section, Passenger $passenger)
     {
         $this->section = $section;
-        $this->human = $human;
+        $this->passenger = $passenger;
     }
 
     /**
@@ -56,17 +56,17 @@ class Pricing
      */
     public function toPrice()
     {
-        if ($this->human->isPass()) {
+        if ($this->passenger->isPass()) {
             return 0;
         }
 
         $price = $this->section;
 
-        if (!$this->human->isAdult()) {
+        if (!$this->passenger->isAdult()) {
             $price = $this->child($price);
         }
 
-        if ($this->human->isWelfare()) {
+        if ($this->passenger->isWelfare()) {
             $price = $this->welfare($price);
         }
 

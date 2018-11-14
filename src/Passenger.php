@@ -9,7 +9,7 @@
 namespace InakaPhper\NagoyaPhp;
 
 
-class Human
+class Passenger
 {
     private $type;
 
@@ -18,7 +18,7 @@ class Human
     private $welfare;
 
     /**
-     * Human constructor.
+     * Passenger constructor.
      * @param $symbol
      */
     public function __construct($symbol)

@@ -12,7 +12,7 @@ class NagoyaPhp
 {
     private $section;
 
-    private $customers;
+    private $passengers;
 
     /**
      * NagoyaPhp constructor.
@@ -23,15 +23,15 @@ class NagoyaPhp
         $parser = new Parser($input);
 
         $this->section = $parser->getSection();
-        $this->customers = new Collection($parser->getCustomers());
+        $this->passengers = new Collection($parser->getCustomers());
 
-        $adults = $this->customers->filter(function ($item) {
-            /** @var $item Human */
+        $adults = $this->passengers->filter(function ($item) {
+            /** @var $item Passenger */
             return $item->isAdult();
         });
 
-        $infant = $this->customers->filter(function ($item) {
-            /** @var $item Human */
+        $infant = $this->passengers->filter(function ($item) {
+            /** @var $item Passenger */
             return $item->isInfant();
         })->sortByDesc(function ($item) {
             return (new Pricing($this->section, $item))->toPrice();
@@ -53,7 +53,7 @@ class NagoyaPhp
      */
     public function getPrice()
     {
-        return (int) $this->customers->sum(function ($customer) {
+        return (int) $this->passengers->sum(function ($customer) {
             return (new Pricing($this->section, $customer))->toPrice();
         });
 
