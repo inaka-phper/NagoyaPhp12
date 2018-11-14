@@ -58,10 +58,10 @@ class NagoyaPhpTest extends TestCase
     /**
      * @dataProvider data
      * @param $input
-     * @param $actual
+     * @param $expected
      */
-    public function testCalc($input, $actual)
+    public function testCalc($input, $expected)
     {
-        $this->assertEquals((new NagoyaPhp($input))->getPrice(), $actual);
+        $this->assertEquals($expected, (new NagoyaPhp($input))->getPrice());
     }
 }
