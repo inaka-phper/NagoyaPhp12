@@ -23,7 +23,7 @@ class NagoyaPhp
         $parser = new Parser($input);
 
         $this->section = $parser->getSection();
-        $this->passengers = new Collection($parser->getCustomers());
+        $this->passengers = new Collection($parser->getPassengers());
 
         $adults = $this->passengers->filter(function ($item) {
             /** @var $item Passenger */
@@ -47,8 +47,8 @@ class NagoyaPhp
      */
     public function getPrice()
     {
-        return (int) $this->passengers->sum(function ($customer) {
-            return (new Pricing($this->section, $customer))->toPrice();
+        return (int) $this->passengers->sum(function ($passenger) {
+            return (new Pricing($this->section, $passenger))->toPrice();
         });
 
     }

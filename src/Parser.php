@@ -11,7 +11,7 @@ namespace InakaPhper\NagoyaPhp;
 
 class Parser
 {
-    private $customers;
+    private $passengers;
 
     private $section;
 
@@ -40,10 +40,10 @@ class Parser
     {
         $parse = explode(':', $input);
         $this->section = $parse[0];
-        $customers = explode(',', $parse[1]);
+        $passengers = explode(',', $parse[1]);
 
-        foreach ($customers as $customer) {
-            $this->customers[] = $this->toPassenger($customer);
+        foreach ($passengers as $passenger) {
+            $this->passengers[] = $this->toPassenger($passenger);
         }
     }
 
@@ -58,8 +58,8 @@ class Parser
     /**
      * @return mixed
      */
-    public function getCustomers()
+    public function getPassengers()
     {
-        return $this->customers;
+        return $this->passengers;
     }
 }
