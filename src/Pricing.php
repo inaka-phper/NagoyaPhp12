@@ -62,7 +62,7 @@ class Pricing
 
         $price = $this->section;
 
-        if (!$this->passenger->isAdult()) {
+        if ($this->passenger->isChild() || $this->passenger->isInfant()) {
             $price = $this->child($price);
         }
 
