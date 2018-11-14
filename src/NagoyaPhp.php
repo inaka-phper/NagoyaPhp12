@@ -35,16 +35,10 @@ class NagoyaPhp
             return $item->isInfant();
         })->sortByDesc(function ($item) {
             return (new Pricing($this->section, $item))->toPrice();
-        });
+        })->slice(0, $adults->count() * 2);
 
-        $free = $adults->count() * 2;
-
-        $i = 0;
         foreach ($infant as $key => $item) {
-            if ($i < $free) {
-                $this->passengers->get($key)->setFree();
-            }
-            $i++;
+            $this->passengers->get($key)->setFree();
         }
     }
 
